@@ -51,7 +51,7 @@ def create_voucher(data):
     c.drawRightString(4.4 * inch, 7.4 * inch, data["expiry_date"])
 
     # Boots Image
-    c.drawImage("resource/img_boots.png", 5.8 * inch, 7.2 * inch, width=1.7 * inch, height=2 * inch, preserveAspectRatio=True)
+    c.drawImage("resource/img_boots.png", 5.8 * inch, 7.3 * inch, width=1.7 * inch, height=1.8 * inch, preserveAspectRatio=True)
 
     # Authorization Text
     styles = getSampleStyleSheet()
@@ -80,28 +80,30 @@ def create_voucher(data):
     c.line(1 * inch, 3.7 * inch, 7.5 * inch, 3.7 * inch)
     c.line(4.25 * inch, 1.8 * inch, 4.25 * inch, 3.7 * inch)
 
+    # Labels
+    c.setFont("Helvetica-Bold", 10)
     c.drawString(1.1 * inch, 3.5 * inch, "Date Voucher Issued:")
-    c.drawString(4.35 * inch, 3.5 * inch, data["date_voucher_issued"])
-    c.line(1 * inch, 3.4 * inch, 7.5 * inch, 3.4 * inch)
-
     c.drawString(1.1 * inch, 3.2 * inch, "Time Issued:")
-    c.drawString(4.35 * inch, 3.2 * inch, data["time_issued"])
-    c.line(1 * inch, 3.1 * inch, 7.5 * inch, 3.1 * inch)
-
     c.drawString(1.1 * inch, 2.9 * inch, "Division:")
-    c.drawString(4.35 * inch, 2.9 * inch, data["division"])
-    c.line(1 * inch, 2.8 * inch, 7.5 * inch, 2.8 * inch)
-
     c.drawString(1.1 * inch, 2.6 * inch, "Cost Centre:")
-    c.drawString(4.35 * inch, 2.6 * inch, data["cost_centre"])
-    c.line(1 * inch, 2.5 * inch, 7.5 * inch, 2.5 * inch)
-
     c.drawString(1.1 * inch, 2.3 * inch, "GL:")
-    c.drawString(4.35 * inch, 2.3 * inch, data["gl"])
-    c.line(1 * inch, 2.2 * inch, 7.5 * inch, 2.2 * inch)
-
     c.drawString(1.1 * inch, 2.0 * inch, "Issued By:")
+
+    # Values
+    c.setFont("Helvetica", 10)
+    c.drawString(4.35 * inch, 3.5 * inch, data["date_voucher_issued"])
+    c.drawString(4.35 * inch, 3.2 * inch, data["time_issued"])
+    c.drawString(4.35 * inch, 2.9 * inch, data["division"])
+    c.drawString(4.35 * inch, 2.6 * inch, data["cost_centre"])
+    c.drawString(4.35 * inch, 2.3 * inch, data["gl"])
     c.drawString(4.35 * inch, 2.0 * inch, data["issued_by"])
+
+    # Horizontal lines
+    c.line(1 * inch, 3.4 * inch, 7.5 * inch, 3.4 * inch)
+    c.line(1 * inch, 3.1 * inch, 7.5 * inch, 3.1 * inch)
+    c.line(1 * inch, 2.8 * inch, 7.5 * inch, 2.8 * inch)
+    c.line(1 * inch, 2.5 * inch, 7.5 * inch, 2.5 * inch)
+    c.line(1 * inch, 2.2 * inch, 7.5 * inch, 2.2 * inch)
 
     # Barcodes and Vendor Logos
     c.drawImage("resource/img_mister_safety_shoes.png", 1.1 * inch, 1.2 * inch, width=1.5*inch, preserveAspectRatio=True)
