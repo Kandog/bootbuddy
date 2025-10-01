@@ -128,10 +128,15 @@ def replace_placeholders_and_convert(template_path, data, output_docx, output_pd
             p = Paragraph(para_element, doc)
             replace_text_in_runs(p.runs, data)
 
-    doc.save(output_docx)
-    print(f"Saved modified document to {output_docx}")
+    # If the last paragraph is empty, remove it to prevent an extra page
+    if doc.paragraphs and not doc.paragraphs[-1].text.strip():
+        p = doc.paragraphs[-1]._element
+        p.getparent().remove(p)
+
 
     try:
+        doc.save(output_docx)
+        print(f"Saved modified document to {output_docx}")
         convert(output_docx, output_pdf)
         print(f"Converted {output_docx} to {output_pdf}")
     except Exception as e:
